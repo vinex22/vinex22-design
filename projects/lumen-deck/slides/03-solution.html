@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 03 Solution</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 03 — solution · 60/40 two-column · diagram left, copy right */
+  .solution-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 100px;
+    padding-top: 70px;
+    align-items: stretch;
+  }
+
+  /* LEFT — flow diagram */
+  .flow {
+    position: relative;
+    padding-top: 30px;
+  }
+  .flow-stage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 130px;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 28px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--rule-strong);
+  }
+  .flow-row.signal {
+    background: rgba(230, 57, 70, 0.06);
+    border-left-color: var(--signal);
+  }
+  .flow-row .step {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .flow-row.signal .step { color: var(--signal); }
+  .flow-row .label {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .flow-row .label .sub {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-3);
+    margin-top: 4px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .flow-row .badge {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.10em;
+    color: var(--ink-3);
+    text-align: right;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .flow-row.signal .badge { color: var(--signal-ink); }
+
+  .flow-arrow {
+    text-align: center;
+    color: var(--ink-3);
+    font-size: 22px;
+    line-height: 0;
+    margin: 4px 0;
+  }
+
+  /* RIGHT — copy */
+  .copy h3 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 36px;
+  }
+  .copy h3 em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+  .copy .body {
+    font-size: 26px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+    max-width: 28ch;
+  }
+  .copy ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 36px;
+    border-top: 1.5px solid var(--rule);
+  }
+  .copy li {
+    padding: 22px 0;
+    border-bottom: 1.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .copy li .num {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--signal);
+    padding-top: 8px;
+  }
+  .copy li .text {
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .copy li .text .sub {
+    display: block;
+    font-size: 18px;
+    color: var(--ink-3);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="solution-grid">
+
+    <!-- LEFT · the diff-risk triage flow -->
+    <div class="flow">
+      <div class="kicker" style="margin-bottom: 32px;">Solution 03</div>
+
+      <div class="flow-stage">
+
+        <div class="flow-row">
+          <span class="step">01</span>
+          <div class="label">PR opened
+            <span class="sub">Webhook fires &middot; diff streamed to Lumen</span>
+          </div>
+          <span class="badge">&lt; 200ms</span>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-row">
+          <span class="step">02</span>
+          <div class="label">Static + semantic scan
+            <span class="sub">AST diff &middot; blast-radius graph &middot; secret/PII sniff</span>
+          </div>
+          <span class="badge">2&ndash;6&nbsp;sec</span>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-row signal">
+          <span class="step">03</span>
+          <div class="label">Risk triage by Lumen
+            <span class="sub">Diff routed by risk class &middot; reviewer auto-assigned</span>
+          </div>
+          <span class="badge">&lt; 10&nbsp;sec</span>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-row">
+          <span class="step">04</span>
+          <div class="label">Senior eng reviews
+            <span class="sub">Receives only the diffs that need a human</span>
+          </div>
+          <span class="badge">&minus; 71&nbsp;%<br>review time</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT · copy -->
+    <div class="copy">
+      <h3>The reviewer <em>before</em> the reviewer.</h3>
+
+      <p class="body">
+        Lumen sits between &ldquo;PR opened&rdquo; and &ldquo;human reviewer notified.&rdquo; It reads the diff, the blast radius, and your team&rsquo;s past reviews &mdash; then routes the PR by risk class so seniors only see what actually needs them.
+      </p>
+
+      <ul>
+        <li>
+          <span class="num">A</span>
+          <div class="text">Risk-classed routing
+            <span class="sub">Low-risk diffs auto-merged with audit log; high-risk routed to the right senior</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">B</span>
+          <div class="text">Per-team learned policy
+            <span class="sub">Calibrates to your team's past reviews &mdash; not a generic LLM rubric</span>
+          </div>
+        </li>
+        <li>
+          <span class="num">C</span>
+          <div class="text">Read-only by default
+            <span class="sub">No write scope on day one; passes SOC&nbsp;2 controls</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Solution &middot; what Lumen is</div>
+    <div class="pagenum tabular">03<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

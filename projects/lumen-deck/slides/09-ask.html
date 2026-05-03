@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 09 Ask</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 09 — the ask · hybrid section + use-of-funds bar */
+  .ask-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 100px;
+    padding-top: 70px;
+    align-items: stretch;
+  }
+
+  /* LEFT — the ask */
+  .ask-left .kicker { margin-bottom: 30px; }
+  .ask-left .raise-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .ask-left .raise-row .label {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .ask-left .raise-row .stage {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+  }
+  .ask-left .raise {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 280px;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    font-variant-numeric: lining-nums;
+    text-wrap: nowrap;
+    margin-bottom: 20px;
+  }
+  .ask-left .raise .currency {
+    font-size: 130px;
+    font-weight: 700;
+    vertical-align: 1.18em;
+    color: var(--ink-3);
+    margin-right: 6px;
+  }
+  .ask-left .raise .unit {
+    font-size: 130px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--signal);
+    vertical-align: 0.05em;
+    margin-left: 6px;
+    letter-spacing: -0.02em;
+  }
+  .ask-left .terms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 24px;
+    margin-top: 40px;
+  }
+  .ask-left .terms .term .head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .ask-left .terms .term .val {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+  }
+  .ask-left .terms .term .val .sub {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-3);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  /* RIGHT — use of funds */
+  .use-funds .kicker { margin-bottom: 30px; }
+  .use-funds h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin-bottom: 36px;
+  }
+  .use-funds h3 em { font-style: italic; color: var(--signal-ink); }
+
+  .stack-bar {
+    height: 56px;
+    display: flex;
+    border: 1.5px solid var(--ink);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .stack-bar .seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    color: var(--paper);
+    border-right: 1.5px solid var(--paper);
+  }
+  .stack-bar .seg:last-child { border-right: none; }
+  .stack-bar .seg.s1 { background: var(--ink);       width: 50%; }
+  .stack-bar .seg.s2 { background: var(--signal);    width: 25%; }
+  .stack-bar .seg.s3 { background: var(--ink-2);     width: 15%; color: var(--paper); }
+  .stack-bar .seg.s4 { background: var(--ink-3);     width: 10%; color: var(--paper); }
+
+  .legend-rows {
+    display: grid;
+    gap: 18px;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 24px;
+  }
+  .legend-rows .row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .legend-rows .row .swatch {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--ink);
+    align-self: center;
+  }
+  .legend-rows .row.s1 .swatch { background: var(--ink); }
+  .legend-rows .row.s2 .swatch { background: var(--signal); border-color: var(--signal); }
+  .legend-rows .row.s3 .swatch { background: var(--ink-2); }
+  .legend-rows .row.s4 .swatch { background: var(--ink-3); }
+  .legend-rows .row .what {
+    font-family: var(--font-body);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .legend-rows .row .what .sub {
+    display: block;
+    font-size: 15px;
+    color: var(--ink-3);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .legend-rows .row .pct {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .use-funds .runway {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--signal);
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .use-funds .runway strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="ask-grid">
+
+    <!-- LEFT — the raise -->
+    <div class="ask-left">
+      <div class="kicker">The ask 09</div>
+      <div class="raise-row">
+        <div class="label">We&rsquo;re raising</div>
+        <div class="stage">Series A &middot; priced</div>
+      </div>
+      <div class="raise"><span class="currency">$</span>14<span class="unit">M</span></div>
+
+      <div class="terms">
+        <div class="term">
+          <div class="head">Lead investor</div>
+          <div class="val">Open
+            <span class="sub">$8M minimum &middot; board seat included</span>
+          </div>
+        </div>
+        <div class="term">
+          <div class="head">Pre-money</div>
+          <div class="val">$66M
+            <span class="sub">10x current ARR &middot; standard SaaS</span>
+          </div>
+        </div>
+        <div class="term">
+          <div class="head">Closing</div>
+          <div class="val">Q3 2026
+            <span class="sub">Allocation reserved for existing seed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — use of funds -->
+    <div class="use-funds">
+      <div class="kicker">Use of funds</div>
+      <h3>Two-thirds into <em>product &amp; go-to-market</em>, one-third into runway.</h3>
+
+      <div class="stack-bar" role="img" aria-label="Use-of-funds stacked bar">
+        <div class="seg s1">50</div>
+        <div class="seg s2">25</div>
+        <div class="seg s3">15</div>
+        <div class="seg s4">10</div>
+      </div>
+
+      <div class="legend-rows">
+        <div class="row s1">
+          <div class="swatch"></div>
+          <div class="what">Engineering &amp; product
+            <span class="sub">+12 hires, on-call coverage, model infra</span>
+          </div>
+          <div class="pct">50 %</div>
+        </div>
+        <div class="row s2">
+          <div class="swatch"></div>
+          <div class="what">Go-to-market
+            <span class="sub">First two AEs, founding marketer, dev-rel</span>
+          </div>
+          <div class="pct">25 %</div>
+        </div>
+        <div class="row s3">
+          <div class="swatch"></div>
+          <div class="what">Security &amp; compliance
+            <span class="sub">SOC&nbsp;2 Type&nbsp;II, ISO&nbsp;27001, FedRAMP path</span>
+          </div>
+          <div class="pct">15 %</div>
+        </div>
+        <div class="row s4">
+          <div class="swatch"></div>
+          <div class="what">Runway buffer
+            <span class="sub">12 months past plan &middot; no bridge needed</span>
+          </div>
+          <div class="pct">10 %</div>
+        </div>
+      </div>
+
+      <div class="runway">
+        <strong>30 months of runway</strong> at current burn &middot; gets us to $8M ARR and a Series&nbsp;B from strength.
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">The ask &middot; Series A</div>
+    <div class="pagenum tabular">09<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

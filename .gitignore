@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Video render scratch (produced by render-video.js)
+.video-tmp-*/
+**/.video-tmp-*/
+
+# Personal asset index (real per-user data; only the .example.json template is tracked)
+assets/personal-asset-index.json
+
+# Node / editor / OS
+node_modules/
+*.swp
+.idea/
+.vscode/
+Thumbs.db
+
+# Verification artifacts (screenshots, ad-hoc test scripts)
+demos/_frames_*.png
+demos/_verify.js
+demos/_verify.mjs
+
+# Python venv used by scripts/verify.py — recreate locally with `pip install playwright`
+.venv/
+__pycache__/
+*.pyc
+
+# Per-project screenshot scratch (kept locally; demo/test artifact, not part of the skill)
+projects/**/screenshots/

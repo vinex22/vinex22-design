@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 02 Problem</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 02 — problem · quote / emotion
+     Budget: ~696px content. Layout: 36px kicker row + ~440px quote + 200px stats = 676px ✓ */
+  .problem-grid {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-top: 30px;
+    gap: 24px;
+  }
+
+  .problem-kicker .kicker { margin-bottom: 0; }
+
+  .pull-quote {
+    align-self: center;
+    max-width: 1480px;
+    /* reserve room for the 180px-tall open-quote glyph above the text row */
+    padding-top: 90px;
+    position: relative;
+  }
+  .pull-quote .open {
+    position: absolute;
+    top: 0;
+    left: -8px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 180px;
+    line-height: 1;
+    color: var(--signal);
+    display: block;
+  }
+  .pull-quote .text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 84px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0;
+  }
+  .pull-quote .text em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+  .pull-quote .attribution {
+    margin-top: 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+  }
+  .pull-quote .attribution::before {
+    content: "";
+    display: inline-block;
+    width: 48px;
+    height: 1.5px;
+    background: var(--rule-strong);
+  }
+  .pull-quote .attribution .name { color: var(--ink); font-weight: 600; }
+
+  .problem-foot {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 24px;
+  }
+  .problem-foot .stat .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    font-variant-numeric: lining-nums proportional-nums;
+  }
+  .problem-foot .stat .num em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+  .problem-foot .stat .lbl {
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-3);
+    line-height: 1.45;
+    text-wrap: pretty;
+    max-width: 36ch;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="problem-grid">
+
+    <div class="problem-kicker">
+      <div class="kicker">Problem 02</div>
+    </div>
+
+    <div class="pull-quote">
+      <span class="open">&ldquo;</span>
+      <p class="text">
+        Reviewing PRs is the part of senior-engineer work I dread the most &mdash; and the part my company pays me <em>the most</em> to do.
+      </p>
+      <div class="attribution">
+        <span class="name">Staff engineer, Series&nbsp;C fintech</span>
+        <span>&middot; Lumen user-research interview, Mar 2026</span>
+      </div>
+    </div>
+
+    <div class="problem-foot">
+      <div class="stat">
+        <div class="num"><em>62 %</em></div>
+        <div class="lbl">of senior-eng review time is spent triaging "is this risky?" before reading the actual diff</div>
+      </div>
+      <div class="stat">
+        <div class="num"><em>4.7 hrs</em></div>
+        <div class="lbl">median weekly time a staff-level reviewer spends on PR review across surveyed orgs</div>
+      </div>
+      <div class="stat">
+        <div class="num"><em>1 in 3</em></div>
+        <div class="lbl">PRs ship with at least one comment that the reviewer admits "I don't have time to chase"</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Problem &middot; the bottleneck</div>
+    <div class="pagenum tabular">02<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

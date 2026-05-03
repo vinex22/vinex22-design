@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 07 Customer Quote</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 07 — full-bleed customer voice (paper-flipped) */
+  .slide.flipped {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .slide.flipped .masthead { border-bottom-color: rgba(247, 245, 240, 0.16); }
+  .slide.flipped .masthead .brand { color: var(--paper); }
+  .slide.flipped .masthead .brand .signal-dot { background: var(--signal); }
+  .slide.flipped .masthead .meta { color: rgba(247, 245, 240, 0.55); }
+  .slide.flipped .footer { border-top-color: rgba(247, 245, 240, 0.16); }
+  .slide.flipped .footer .section-name { color: rgba(247, 245, 240, 0.55); }
+  .slide.flipped .footer .pagenum { color: var(--paper); }
+  .slide.flipped .footer .pagenum .total { color: rgba(247, 245, 240, 0.45); }
+
+  .quote-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    padding-top: 50px;
+    gap: 60px;
+  }
+
+  .big-quote {
+    align-self: center;
+    max-width: 1500px;
+  }
+  .big-quote .kicker {
+    color: rgba(247, 245, 240, 0.55);
+    margin-bottom: 36px;
+  }
+  .big-quote .text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 88px;
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--paper);
+    text-wrap: balance;
+  }
+  .big-quote .text .open {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 200px;
+    color: var(--signal);
+    line-height: 0;
+    margin-right: 8px;
+    vertical-align: -0.4em;
+    font-weight: 500;
+  }
+  .big-quote .text em {
+    font-style: italic;
+    color: var(--signal);
+    font-weight: 600;
+  }
+
+  .quote-attribution {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 28px;
+    align-items: center;
+    border-top: 1.5px solid rgba(247, 245, 240, 0.18);
+    padding-top: 32px;
+    margin-bottom: 24px;
+  }
+  .quote-attribution .avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6B6B72 0%, #2A2A30 100%);
+    border: 2px solid var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .quote-attribution .who {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--paper);
+    line-height: 1.2;
+  }
+  .quote-attribution .who .role {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 19px;
+    color: rgba(247, 245, 240, 0.65);
+    font-weight: 400;
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .quote-attribution .stamp {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--signal);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .quote-attribution .stamp .since {
+    display: block;
+    color: rgba(247, 245, 240, 0.55);
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="slide flipped">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="quote-grid">
+
+    <div class="big-quote">
+      <div class="kicker">Customer voice 07</div>
+      <p class="text"><span class="open">&ldquo;</span>We stopped paying our staff engineers to read PR titles. They get the <em>three diffs that actually matter</em> &mdash; and we ship the rest in the background. It&rsquo;s the only AI tool we kept after the trial.&rdquo;</p>
+    </div>
+
+    <div class="quote-attribution">
+      <div class="avatar">DM</div>
+      <div class="who">Danielle Martinez
+        <span class="role">VP Engineering &middot; Beacon&nbsp;Health (Series&nbsp;C, 180 engineers)</span>
+      </div>
+      <div class="stamp">Lumen customer
+        <span class="since">since Nov&nbsp;2025</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Customer voice</div>
+    <div class="pagenum tabular">07<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

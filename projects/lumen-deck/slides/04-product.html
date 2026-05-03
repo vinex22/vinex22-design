@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 04 Product</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 04 — product · device frame · browser window mockup */
+  .product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.45fr;
+    gap: 90px;
+    padding-top: 60px;
+    align-items: stretch;
+  }
+
+  /* LEFT — caption */
+  .product-caption .kicker { margin-bottom: 28px; }
+  .product-caption h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 76px;
+    line-height: 1.02;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 36px;
+  }
+  .product-caption h3 em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+  .product-caption .body {
+    font-family: var(--font-body);
+    font-size: 24px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 32ch;
+    margin-bottom: 40px;
+  }
+  .product-caption .annotations {
+    display: grid;
+    gap: 22px;
+    border-top: 1.5px solid var(--rule);
+    padding-top: 28px;
+  }
+  .product-caption .ann {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .product-caption .ann .marker {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .product-caption .ann.signal .marker { border-color: var(--signal); color: var(--signal); }
+  .product-caption .ann .text {
+    font-family: var(--font-body);
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .product-caption .ann .text .sub {
+    display: block;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  /* RIGHT — browser mockup */
+  .device {
+    background: #FFFFFF;
+    border: 1.5px solid var(--rule-strong);
+    box-shadow: 0 24px 60px -20px rgba(15, 15, 18, 0.18);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    height: 800px;
+  }
+  .device .chrome {
+    background: #ECEAE3;
+    border-bottom: 1.5px solid var(--rule);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .device .chrome .dots {
+    display: flex;
+    gap: 8px;
+  }
+  .device .chrome .dots span {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #C7C3B9;
+  }
+  .device .chrome .url {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-3);
+    margin: 0 14px;
+  }
+  .device .chrome .url .lock {
+    color: var(--signal);
+    margin-right: 8px;
+  }
+  .device .chrome .tab {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .device .body-pane {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    background: #FCFAF6;
+    overflow: hidden;
+  }
+
+  .device .sidebar {
+    background: #F4F1EA;
+    border-right: 1.5px solid var(--rule);
+    padding: 22px 18px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink-3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .device .sidebar .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin: 18px 0 6px;
+    font-weight: 600;
+  }
+  .device .sidebar .lbl:first-child { margin-top: 0; }
+  .device .sidebar .pr {
+    padding: 6px 8px;
+    border-radius: 3px;
+    color: var(--ink);
+    font-weight: 500;
+    cursor: default;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .device .sidebar .pr.active {
+    background: var(--ink);
+    color: #FFFFFF;
+  }
+  .device .sidebar .pr .pri {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink-3);
+    flex-shrink: 0;
+  }
+  .device .sidebar .pr .pri.high { background: var(--signal); }
+  .device .sidebar .pr .pri.med  { background: #D4A574; }
+
+  .device .main {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+  }
+  .device .main .pr-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1.5px solid var(--rule);
+    padding-bottom: 14px;
+  }
+  .device .main .pr-header .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--ink);
+  }
+  .device .main .pr-header .title .num {
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+  .device .main .pr-header .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .risk-card {
+    border: 1.5px solid var(--signal);
+    background: rgba(230, 57, 70, 0.04);
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+  .risk-card .badge {
+    background: var(--signal);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.10em;
+  }
+  .risk-card .label {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .risk-card .label .sub {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+  .risk-card .route {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    color: var(--signal-ink);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  .findings {
+    display: grid;
+    gap: 10px;
+  }
+  .findings .row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .findings .row .icon {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-3);
+    text-align: center;
+  }
+  .findings .row.signal .icon { color: var(--signal); }
+  .findings .row .file {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .findings .row .file .note {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+  .findings .row .lines {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  .marker-pin {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--signal);
+    background: var(--paper);
+    color: var(--signal);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  .device-wrap { position: relative; }
+  .marker-pin.m1 { top: 36px; left: -22px; border-color: var(--ink); color: var(--ink); }
+  .marker-pin.m2 { top: 240px; left: -22px; }
+  .marker-pin.m3 { top: 540px; left: -22px; border-color: var(--ink); color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="product-grid">
+
+    <!-- LEFT · caption -->
+    <div class="product-caption">
+      <div class="kicker">Product 04</div>
+      <h3>The reviewer view, <em>simplified</em>.</h3>
+      <p class="body">
+        Lumen lives in your existing GitHub / GitLab review flow &mdash; one pane, one risk verdict, one route. No new dashboard for engineers to context-switch into.
+      </p>
+
+      <div class="annotations">
+        <div class="ann">
+          <div class="marker">A</div>
+          <div class="text">PR queue, sorted by Lumen risk class
+            <span class="sub">Senior reviewers see only the red items first</span>
+          </div>
+        </div>
+        <div class="ann signal">
+          <div class="marker">B</div>
+          <div class="text">Diff-risk verdict at the top of every PR
+            <span class="sub">One-line decision &middot; one click to escalate or dismiss</span>
+          </div>
+        </div>
+        <div class="ann">
+          <div class="marker">C</div>
+          <div class="text">Findings inline with file paths
+            <span class="sub">Lumen never edits &mdash; it points</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT · device frame -->
+    <div class="device-wrap">
+      <div class="marker-pin m1">A</div>
+      <div class="marker-pin m2">B</div>
+      <div class="marker-pin m3">C</div>
+
+      <div class="device" role="img" aria-label="Lumen reviewer-view product mockup">
+        <div class="chrome">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="url"><span class="lock">&#9679;</span>app.lumen.dev / review / orgs / acme / inbox</div>
+          <div class="tab">Reviewer</div>
+        </div>
+
+        <div class="body-pane">
+
+          <aside class="sidebar">
+            <div class="lbl">Inbox &middot; 12</div>
+            <div class="pr active">
+              <span class="pri high"></span>
+              feat: bg-job retry policy
+            </div>
+            <div class="pr">
+              <span class="pri high"></span>
+              fix: webhook auth race
+            </div>
+            <div class="pr">
+              <span class="pri med"></span>
+              chore: deps bump
+            </div>
+            <div class="pr">
+              <span class="pri"></span>
+              docs: readme typos
+            </div>
+            <div class="pr">
+              <span class="pri"></span>
+              test: snapshot resync
+            </div>
+
+            <div class="lbl">Auto-merged &middot; 47</div>
+            <div class="pr">
+              <span class="pri"></span>
+              chore: ts-node 11.4
+            </div>
+            <div class="pr">
+              <span class="pri"></span>
+              style: prettier pass
+            </div>
+          </aside>
+
+          <main class="main">
+            <div class="pr-header">
+              <div class="title">feat: background-job retry policy <span class="num">#3,142</span></div>
+              <div class="meta">authored by hannah &middot; 4 files &middot; +218 / &minus;47</div>
+            </div>
+
+            <div class="risk-card">
+              <div class="badge">RISK · HIGH</div>
+              <div class="label">Touches retry budget &amp; idempotency keys
+                <span class="sub">Blast radius reaches 3 downstream jobs &middot; replays possible</span>
+              </div>
+              <div class="route">Route to<br>@danielle</div>
+            </div>
+
+            <div class="findings">
+              <div class="row signal">
+                <div class="icon">&#9888;</div>
+                <div class="file">workers/retry.ts
+                  <span class="note">Retry cap raised 5 &rarr; 50 &middot; no jitter &middot; can stampede SQS</span>
+                </div>
+                <div class="lines">L42-L58</div>
+              </div>
+              <div class="row signal">
+                <div class="icon">&#9888;</div>
+                <div class="file">workers/idempotency.ts
+                  <span class="note">Key TTL widened 1h &rarr; 24h &middot; review collision risk</span>
+                </div>
+                <div class="lines">L17-L24</div>
+              </div>
+              <div class="row">
+                <div class="icon">&middot;</div>
+                <div class="file">workers/index.ts
+                  <span class="note">Type-only refactor &middot; no runtime change</span>
+                </div>
+                <div class="lines">L1-L9</div>
+              </div>
+              <div class="row">
+                <div class="icon">&middot;</div>
+                <div class="file">workers/__tests__/retry.spec.ts
+                  <span class="note">New test cases cover cap &middot; reviewer can spot-check</span>
+                </div>
+                <div class="lines">+82</div>
+              </div>
+            </div>
+
+          </main>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Product &middot; reviewer view</div>
+    <div class="pagenum tabular">04<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

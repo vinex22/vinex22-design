@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 06 Traction</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 06 — traction · data chart · proof */
+  .traction-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 90px;
+    padding-top: 60px;
+    align-items: stretch;
+  }
+
+  /* LEFT — headline + KPIs.  Budget: 696. 36 kicker + 28 + ~140 h3 + 28 + 4 rows × 96 = ~620 ✓ */
+  .traction-left .kicker { margin-bottom: 18px; }
+  .traction-left h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 1.02;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 28px;
+    max-width: 18ch;
+  }
+  .traction-left h3 em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+
+  .kpi-stack {
+    display: grid;
+    gap: 0;
+    border-top: 1.5px solid var(--rule);
+  }
+  .kpi {
+    padding: 16px 0;
+    border-bottom: 1.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .kpi .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 0.95;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .kpi .num .unit {
+    font-size: 30px;
+    color: var(--ink-3);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .kpi .num em { font-style: italic; color: var(--signal-ink); font-weight: 700; }
+  .kpi .lbl {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .kpi .lbl .head {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* RIGHT — chart */
+  .chart-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-block .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1.5px solid var(--rule-strong);
+    padding-bottom: 14px;
+    margin-bottom: 36px;
+  }
+  .chart-block .head .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--ink);
+  }
+  .chart-block .head .title em { font-style: italic; color: var(--signal-ink); }
+  .chart-block .head .legend {
+    display: flex;
+    gap: 22px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+  .chart-block .head .legend .swatch {
+    display: inline-block;
+    width: 16px; height: 4px;
+    background: var(--ink);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .chart-block .head .legend .swatch.signal { background: var(--signal); }
+
+  .chart {
+    position: relative;
+    height: 540px;
+    border-left: 1.5px solid var(--rule-strong);
+    border-bottom: 1.5px solid var(--rule-strong);
+    padding: 20px 30px 0 60px;
+  }
+  .chart .y-axis {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding: 6px 0 6px;
+  }
+  .chart .y-axis .tick {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    text-align: right;
+    line-height: 1;
+    transform: translateX(-6px);
+  }
+  .chart .grid-line {
+    position: absolute;
+    left: 60px;
+    right: 30px;
+    border-top: 1px dashed var(--rule);
+  }
+  .chart .x-axis {
+    position: absolute;
+    left: 60px;
+    right: 30px;
+    bottom: -28px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .chart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+  }
+
+  .chart .annotation {
+    position: absolute;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--signal-ink);
+    background: var(--paper);
+    padding: 4px 10px;
+    border: 1.5px solid var(--signal);
+    border-radius: 3px;
+    line-height: 1.3;
+    z-index: 5;
+    font-weight: 600;
+  }
+  .chart .annotation .arrow {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--paper);
+    border-left: 1.5px solid var(--signal);
+    border-bottom: 1.5px solid var(--signal);
+    transform: rotate(45deg);
+  }
+
+  .chart-foot {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1.5px solid var(--rule);
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .chart-foot .src {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="traction-grid">
+
+    <!-- LEFT — kpis -->
+    <div class="traction-left">
+      <div class="kicker">Traction 06</div>
+      <h3>Eight months in, growth is <em>compounding monthly</em>.</h3>
+
+      <div class="kpi-stack">
+        <div class="kpi">
+          <div class="num"><em>$1.42M</em><span class="unit"> ARR</span></div>
+          <div class="lbl">
+            <span class="head">Annual run-rate</span>
+            April 2026 &middot; from $0 in September 2025
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="num">38<span class="unit"> teams</span></div>
+          <div class="lbl">
+            <span class="head">Paying customers</span>
+            21 SMB &middot; 14 mid-market &middot; 3 enterprise pilots
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="num">132 %</div>
+          <div class="lbl">
+            <span class="head">Net retention</span>
+            Q1 2026 cohort &middot; expansion driven by seat growth
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="num">71 %</div>
+          <div class="lbl">
+            <span class="head">Reduction in senior-eng review time</span>
+            Median across pilot cohort &middot; self-reported, 14 days post-onboard
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — chart -->
+    <div class="chart-block">
+      <div class="head">
+        <div class="title">Monthly recurring revenue, <em>2025-09 → 2026-04</em></div>
+        <div class="legend">
+          <span><span class="swatch signal"></span>MRR ($k)</span>
+        </div>
+      </div>
+
+      <div class="chart">
+        <div class="y-axis">
+          <div class="tick">0</div>
+          <div class="tick">30</div>
+          <div class="tick">60</div>
+          <div class="tick">90</div>
+          <div class="tick">120</div>
+        </div>
+
+        <div class="grid-line" style="bottom: 25%"></div>
+        <div class="grid-line" style="bottom: 50%"></div>
+        <div class="grid-line" style="bottom: 75%"></div>
+        <div class="grid-line" style="bottom: 100%"></div>
+
+        <svg viewBox="0 0 700 500" preserveAspectRatio="none">
+          <!-- area under line -->
+          <polygon
+            fill="rgba(230, 57, 70, 0.08)"
+            points="0,470 0,460 87,440 175,400 262,340 350,260 437,180 525,110 612,55 700,15 700,500 0,500"
+          />
+          <!-- line -->
+          <polyline
+            fill="none"
+            stroke="#E63946"
+            stroke-width="3.5"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            points="0,460 87,440 175,400 262,340 350,260 437,180 525,110 612,55 700,15"
+          />
+          <!-- dots -->
+          <g fill="#E63946">
+            <circle cx="0"   cy="460" r="6" />
+            <circle cx="87"  cy="440" r="6" />
+            <circle cx="175" cy="400" r="6" />
+            <circle cx="262" cy="340" r="6" />
+            <circle cx="350" cy="260" r="6" />
+            <circle cx="437" cy="180" r="6" />
+            <circle cx="525" cy="110" r="6" />
+            <circle cx="612" cy="55"  r="6" />
+            <circle cx="700" cy="15"  r="7" stroke="#FFFFFF" stroke-width="2.5" />
+          </g>
+        </svg>
+
+        <div class="annotation" style="top: -20px; right: 0;">$118k · Apr</div>
+
+        <div class="x-axis">
+          <span>Sep</span>
+          <span>Oct</span>
+          <span>Nov</span>
+          <span>Dec</span>
+          <span>Jan</span>
+          <span>Feb</span>
+          <span>Mar</span>
+          <span>Apr</span>
+        </div>
+      </div>
+
+      <div class="chart-foot">
+        <div>
+          <strong style="color: var(--ink);">23 % avg MoM growth</strong> &middot; no churn this quarter &middot; 12 inbound on the wait-list
+        </div>
+        <div class="src">Internal billing &middot; Stripe</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Traction &middot; the proof</div>
+    <div class="pagenum tabular">06<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

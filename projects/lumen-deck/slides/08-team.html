@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 08 Team</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 08 — team · 2x2 leadership grid + advisor row
+     Budget: 696. head ~96 + 16 gap + leaders 2 rows × ~210 + 16 gap + advisors ~64 = ~612 ✓ */
+  .team-grid {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-top: 24px;
+    gap: 16px;
+  }
+
+  .team-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 80px;
+    margin-bottom: 4px;
+  }
+  .team-head h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .team-head h3 em { font-style: italic; color: var(--signal-ink); font-weight: 700; }
+  .team-head .body {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 36ch;
+    padding-bottom: 10px;
+  }
+
+  .leaders {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1.5px solid var(--rule-strong);
+    border-bottom: 1.5px solid var(--rule-strong);
+  }
+  .leader {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 22px;
+    padding: 18px 22px 18px 0;
+    align-items: start;
+  }
+  .leader:nth-child(odd)  { border-right: 1.5px solid var(--rule); padding-right: 32px; }
+  .leader:nth-child(even) { padding-left: 22px; }
+  .leader:nth-child(1), .leader:nth-child(2) { border-bottom: 1.5px solid var(--rule); }
+
+  .leader .portrait {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--paper-2);
+    border: 1.5px solid var(--rule-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .leader.signal .portrait {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .leader .meta {
+    padding-top: 0;
+  }
+  .leader .meta .role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .leader .meta .name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .leader .meta .name .title {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    margin-top: 3px;
+  }
+  .leader .meta .bio {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.45;
+    max-width: 42ch;
+  }
+  .leader .meta .priors {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .leader .meta .priors strong { color: var(--ink); font-weight: 600; }
+
+  .team-foot {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 4px;
+    padding-top: 14px;
+  }
+  .team-foot .label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .team-foot .advisors {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .team-foot .advisors span .org {
+    color: var(--ink-3);
+    font-style: italic;
+    margin-left: 6px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="team-grid">
+
+    <div class="team-head">
+      <h3>Built by people who <em>did the review</em>.</h3>
+      <p class="body">14 people, all in. Two co-founders shipped infra at GitHub Code Review and Stripe Risk before this. Average prior tenure on critical-path eng tooling: 7 yrs.</p>
+    </div>
+
+    <div class="leaders">
+
+      <div class="leader signal">
+        <div class="portrait">RS</div>
+        <div class="meta">
+          <div class="role">Co-founder &middot; CEO</div>
+          <div class="name">Riya Sundaram
+            <span class="title">Sets product, customer, and capital strategy</span>
+          </div>
+          <p class="bio">Built the diff-risk model that became Lumen at GitHub Code Review. Shipped review-time SLOs to 1.2M weekly PRs.</p>
+          <div class="priors">Prior: <strong>GitHub</strong> &middot; <strong>Coda</strong> &middot; CMU CS&nbsp;&rsquo;15</div>
+        </div>
+      </div>
+
+      <div class="leader signal">
+        <div class="portrait">JC</div>
+        <div class="meta">
+          <div class="role">Co-founder &middot; CTO</div>
+          <div class="name">Jordan Cho
+            <span class="title">Owns the runtime, the model, and the on-call</span>
+          </div>
+          <p class="bio">Led the static-analysis team at Stripe Risk. Patented the blast-radius graph that powers Lumen&rsquo;s routing layer.</p>
+          <div class="priors">Prior: <strong>Stripe Risk</strong> &middot; <strong>Datadog</strong> &middot; MIT&nbsp;&rsquo;14</div>
+        </div>
+      </div>
+
+      <div class="leader">
+        <div class="portrait">AO</div>
+        <div class="meta">
+          <div class="role">Head of Engineering</div>
+          <div class="name">Adaeze Okeke
+            <span class="title">Eight engineers report in &middot; ships the platform</span>
+          </div>
+          <p class="bio">Scaled Vercel&rsquo;s build pipeline from 3 to 60 engineers. Knows when to add a service and when to delete one.</p>
+          <div class="priors">Prior: <strong>Vercel</strong> &middot; <strong>Heroku</strong></div>
+        </div>
+      </div>
+
+      <div class="leader">
+        <div class="portrait">MK</div>
+        <div class="meta">
+          <div class="role">Head of GTM</div>
+          <div class="name">Mei Kobayashi
+            <span class="title">Founding GTM hire &middot; closed first 38 customers</span>
+          </div>
+          <p class="bio">Sold Linear into 200+ engineering orgs as employee #6. Operates at the seam of product, design, and revenue.</p>
+          <div class="priors">Prior: <strong>Linear</strong> &middot; <strong>Notion</strong></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="team-foot">
+      <div class="label">Advisors</div>
+      <div class="advisors">
+        <span>Tom Preston-Werner<span class="org">co-founder, GitHub</span></span>
+        <span>Jean Yang<span class="org">CEO, Akita Software</span></span>
+        <span>Will Larson<span class="org">CTO, Carta</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Team &middot; who&rsquo;s building</div>
+    <div class="pagenum tabular">08<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

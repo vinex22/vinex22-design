@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lumen · 01 Cover</title>
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  /* Slide 01 — cover · section/title type */
+  .cover-grid {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-top: 60px;
+  }
+
+  .cover-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .cover-meta .deck-label {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .cover-meta .signal-tag {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--signal);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-meta .signal-tag::before {
+    content: "";
+    width: 56px;
+    height: 4px;
+    background: var(--signal);
+    display: inline-block;
+  }
+
+  .cover-stage {
+    align-self: end;
+    padding-bottom: 30px;
+  }
+  .cover-stage .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 360px;
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+  }
+  .cover-stage .wordmark .dot {
+    width: 36px;
+    height: 36px;
+    background: var(--signal);
+    border-radius: 50%;
+    display: inline-block;
+    transform: translateY(-22px);
+    flex-shrink: 0;
+  }
+  .cover-stage .tagline {
+    margin-top: 36px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+    color: var(--ink-2);
+    max-width: 1280px;
+    text-wrap: balance;
+  }
+  .cover-stage .tagline em {
+    font-style: italic;
+    color: var(--signal-ink);
+    font-weight: 700;
+  }
+
+  .cover-rule {
+    height: 1.5px;
+    background: var(--rule);
+    margin: 60px 0 28px;
+  }
+
+  .cover-foot {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+  .cover-foot .cell .lbl {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+  .cover-foot .cell .val {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .cover-foot .cell .val .num {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <header class="masthead">
+    <div class="brand"><span class="signal-dot"></span>LUMEN</div>
+    <div class="meta">Pitch · Series A · May 2026 · Confidential</div>
+  </header>
+
+  <div class="cover-grid">
+
+    <div class="cover-meta">
+      <div class="deck-label">Investor briefing</div>
+      <div class="signal-tag">10 slides · 12 min</div>
+    </div>
+
+    <div class="cover-stage">
+      <div class="wordmark">Lumen<span class="dot" aria-hidden="true"></span></div>
+      <p class="tagline">
+        The AI code-review reviewer.<br>
+        We triage <em>diff risk</em> before a human looks &mdash; cutting senior-engineer review time by a measured 71&nbsp;%.
+      </p>
+    </div>
+
+    <div>
+      <div class="cover-rule"></div>
+      <div class="cover-foot">
+        <div class="cell">
+          <div class="lbl">Founded</div>
+          <div class="val tabular"><span class="num">2024</span></div>
+        </div>
+        <div class="cell">
+          <div class="lbl">HQ</div>
+          <div class="val">Brooklyn &middot; remote-first</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Stage</div>
+          <div class="val">Post-revenue, pre-Series A</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Team</div>
+          <div class="val tabular"><span class="num">14</span> &middot; ex Stripe / GitHub / Datadog</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="section-name">Cover</div>
+    <div class="pagenum tabular">01<span class="total"> / 10</span></div>
+  </footer>
+
+</div>
+</body>
+</html>
