@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,800;6..72,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --green: #15864A;
+  --deep: #0C4B2E;
+  --gold: #F3B32F;
+  --cream: #FFF7E6;
+  --cream-2: #F6E8C7;
+  --ink: #1B211B;
+  --muted: #627064;
+  --rule: rgba(27,33,27,.18);
+  --rule-strong: rgba(27,33,27,.34);
+  --white: #FFFDF5;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --mx: 104px;
+  --my: 58px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 1920px;
+  height: 1080px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(12,75,46,.04) 1px, transparent 1px) 0 0 / 80px 80px,
+    linear-gradient(0deg, rgba(12,75,46,.035) 1px, transparent 1px) 0 0 / 80px 80px;
+}
+.slide {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  padding: var(--my) var(--mx);
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+.masthead {
+  height: 66px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.logo { width: 126px; height: auto; display: block; }
+.footer {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  bottom: 32px;
+  height: 46px;
+  border-top: 1.5px solid var(--rule);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer b { color: var(--ink); }
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.kicker::before { content: ''; width: 58px; height: 5px; background: var(--gold); display: block; }
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 110px;
+  line-height: .94;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.huge {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 210px;
+  line-height: .82;
+  letter-spacing: 0;
+}
+.body {
+  font-size: 31px;
+  line-height: 1.36;
+  color: var(--ink);
+  font-weight: 650;
+  text-wrap: pretty;
+}
+.small {
+  font-size: 23px;
+  line-height: 1.42;
+  color: var(--muted);
+  font-weight: 650;
+}
+.product-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.panel {
+  border: 1.5px solid var(--rule-strong);
+  background: rgba(255,253,245,.72);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 8px 13px;
+  border: 1.5px solid var(--rule-strong);
+  background: rgba(255,253,245,.76);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--deep);
+}
+.green { color: var(--green); }
+.gold { color: var(--gold); }
+.deep { color: var(--deep); }
+.dark { background: var(--deep); color: var(--white); }
+.dark .masthead, .dark .footer { border-color: rgba(255,253,245,.2); color: rgba(255,253,245,.68); }
+.dark .footer b { color: var(--white); }
+.dark .kicker { color: var(--gold); }
+.dark .kicker::before { background: var(--white); }
+.dark .body, .dark .small { color: rgba(255,253,245,.86); }

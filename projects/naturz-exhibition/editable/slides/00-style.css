@@ -1,0 +1,30 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 960pt;
+  height: 540pt;
+  overflow: hidden;
+  background: #FFF7E6;
+  color: #1B211B;
+  font-family: Aptos, Arial, sans-serif;
+}
+.logo { position: absolute; left: 48pt; top: 30pt; width: 78pt; height: 38pt; }
+.kicker { position: absolute; left: 48pt; top: 96pt; width: 360pt; height: 18pt; }
+.kicker p { font-family: Aptos, Arial, sans-serif; font-size: 10pt; letter-spacing: 1.2pt; color: #15864A; font-weight: 700; text-transform: uppercase; }
+.title { position: absolute; left: 48pt; top: 125pt; width: 500pt; height: 150pt; }
+.title h1 { font-family: Georgia, 'Times New Roman', serif; font-size: 42pt; line-height: 1.02; color: #1B211B; font-weight: 700; }
+.copy { position: absolute; left: 50pt; top: 292pt; width: 430pt; height: 72pt; }
+.copy p { font-size: 17pt; line-height: 1.22; color: #3C493E; font-weight: 500; }
+.footer { position: absolute; left: 48pt; right: 48pt; top: 500pt; height: 16pt; border-top: 1pt solid #D3C9AA; }
+.footer p { font-family: Aptos, Arial, sans-serif; font-size: 8.5pt; color: #6A755F; letter-spacing: .7pt; text-transform: uppercase; margin-top: 6pt; }
+.page-no { position: absolute; left: 858pt; top: 506pt; width: 54pt; height: 12pt; }
+.page-no p { font-family: Aptos, Arial, sans-serif; font-size: 8.5pt; color: #1B211B; text-align: right; letter-spacing: .7pt; }
+.product-large { position: absolute; left: 560pt; top: 84pt; width: 330pt; height: 330pt; }
+.product-large img { width: 330pt; height: 330pt; }
+.panel { position: absolute; background: #FFFDF5; border: 1pt solid #D3C9AA; }
+.green-panel { position: absolute; background: #0C4B2E; }
+.gold-panel { position: absolute; background: #F3B32F; }
+.card-title h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 21pt; line-height: 1.05; color: #1B211B; font-weight: 700; }
+.card-copy p { font-size: 12.5pt; line-height: 1.24; color: #566250; font-weight: 500; }
+.white-title h1, .white-title h2 { color: #FFFDF5; }
+.white-copy p { color: #E9F1E4; }
+.badge p { font-size: 8pt; letter-spacing: .8pt; color: #15864A; font-weight: 700; text-transform: uppercase; }

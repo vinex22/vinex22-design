@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Kong x India · Tourism Campaign</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #101114; font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
+  #stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  iframe { width: 1920px; height: 1080px; border: 0; background: #F7F1E7; transform-origin: center center; box-shadow: 0 28px 80px rgba(0,0,0,.34); }
+  .hud { position: fixed; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; color: rgba(247,241,231,.72); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
+  .hud b { color: #F7F1E7; }
+</style>
+</head>
+<body>
+  <div id="stage"><iframe id="frame" title="Hong Kong India tourism campaign deck"></iframe></div>
+  <div class="hud"><span>Use ← / → to navigate</span><span><b id="current">01</b> / 15</span></div>
+<script>
+const DECK_MANIFEST = [
+  { file: 'slides/01-cover.html', label: 'Cover' },
+  { file: 'slides/02-audience.html', label: 'Audience Fit' },
+  { file: 'slides/03-promise.html', label: 'Campaign Promise' },
+  { file: 'slides/04-skyline-loop.html', label: 'Skyline Loop' },
+  { file: 'slides/05-family-magic.html', label: 'Family Magic' },
+  { file: 'slides/06-culture-calm.html', label: 'Culture + Calm' },
+  { file: 'slides/07-nights-markets.html', label: 'Nights + Markets' },
+  { file: 'slides/08-first-time-map.html', label: 'First-Time Route' },
+  { file: 'slides/09-india-ready.html', label: 'India-Ready Selling' },
+  { file: 'slides/10-package-city-spark.html', label: 'Package 01' },
+  { file: 'slides/11-package-family-magic.html', label: 'Package 02' },
+  { file: 'slides/12-package-culture-harbour.html', label: 'Package 03' },
+  { file: 'slides/13-add-ons.html', label: 'Add-ons' },
+  { file: 'slides/14-campaign-channels.html', label: 'Campaign Channels' },
+  { file: 'slides/15-close.html', label: 'Close' }
+];
+const frame = document.getElementById('frame');
+const current = document.getElementById('current');
+let index = Number(localStorage.getItem('hk-india-slide') || 0);
+function fit() {
+  const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  frame.style.transform = `scale(${scale})`;
+}
+function render() {
+  index = Math.max(0, Math.min(DECK_MANIFEST.length - 1, index));
+  frame.src = DECK_MANIFEST[index].file;
+  current.textContent = String(index + 1).padStart(2, '0');
+  localStorage.setItem('hk-india-slide', String(index));
+}
+window.addEventListener('resize', fit);
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { index += 1; render(); }
+  if (event.key === 'ArrowLeft' || event.key === 'PageUp') { index -= 1; render(); }
+  if (event.key === 'Home') { index = 0; render(); }
+  if (event.key === 'End') { index = DECK_MANIFEST.length - 1; render(); }
+});
+fit();
+render();
+</script>
+</body>
+</html>

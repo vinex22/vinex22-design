@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naturz Industries · Exhibition Promotion Loop</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0C4B2E; font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
+  #stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  iframe { width: 1920px; height: 1080px; border: 0; background: #FFF7E6; transform-origin: center center; box-shadow: 0 30px 90px rgba(0,0,0,.36); }
+  .hud { position: fixed; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,253,245,.72); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
+  .hud b { color: #FFFDF5; }
+</style>
+</head>
+<body>
+  <div id="stage"><iframe id="frame" title="Naturz Industries exhibition promotion deck"></iframe></div>
+  <div class="hud"><span>Auto-loop · Use ← / → to navigate</span><span><b id="current">01</b> / 10</span></div>
+<script>
+const DECK_MANIFEST = [
+  { file: 'slides/01-cover.html', label: 'Cover' },
+  { file: 'slides/02-best-for-plate.html', label: 'Best For Your Plate' },
+  { file: 'slides/03-product-range.html', label: 'Product Range' },
+  { file: 'slides/04-rbd-palm-olein.html', label: 'RBD Palm Olein' },
+  { file: 'slides/05-speciality-fats.html', label: 'Specialty Fats' },
+  { file: 'slides/06-manufacturing.html', label: 'Manufacturing' },
+  { file: 'slides/07-oem-export.html', label: 'OEM + Export' },
+  { file: 'slides/08-quality.html', label: 'Quality Cues' },
+  { file: 'slides/09-contact.html', label: 'Contact' },
+  { file: 'slides/10-close.html', label: 'Close' }
+];
+const frame = document.getElementById('frame');
+const current = document.getElementById('current');
+let index = 0;
+let timer;
+function fit() {
+  const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  frame.style.transform = `scale(${scale})`;
+}
+function render() {
+  index = (index + DECK_MANIFEST.length) % DECK_MANIFEST.length;
+  frame.src = DECK_MANIFEST[index].file;
+  current.textContent = String(index + 1).padStart(2, '0');
+}
+function next() { index += 1; render(); }
+function resetTimer() {
+  clearInterval(timer);
+  timer = setInterval(next, 6500);
+}
+window.addEventListener('resize', fit);
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') { index += 1; render(); resetTimer(); }
+  if (event.key === 'ArrowLeft' || event.key === 'PageUp') { index -= 1; render(); resetTimer(); }
+  if (event.key === 'Home') { index = 0; render(); resetTimer(); }
+  if (event.key === 'End') { index = DECK_MANIFEST.length - 1; render(); resetTimer(); }
+});
+fit();
+render();
+resetTimer();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "victoria-harbour",
+    "title": "Victoria Harbour",
+    "image": "assets/images/victoria-harbour.jpg",
+    "source": "https://en.wikipedia.org/wiki/Victoria_Harbour",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/Hong_Kong_Skyline_viewed_from_Victoria_Peak.jpg"
+  },
+  {
+    "slug": "the-peak",
+    "title": "Victoria Peak",
+    "image": "assets/images/the-peak.jpg",
+    "source": "https://en.wikipedia.org/wiki/Victoria_Peak",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg"
+  },
+  {
+    "slug": "disneyland",
+    "title": "Hong Kong Disneyland",
+    "image": "assets/images/disneyland.jpg",
+    "source": "https://en.wikipedia.org/wiki/Hong_Kong_Disneyland",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Hong_Kong_Disneyland_Castle.jpg"
+  },
+  {
+    "slug": "ocean-park",
+    "title": "Ocean Park Hong Kong",
+    "image": "assets/images/ocean-park.jpg",
+    "source": "https://en.wikipedia.org/wiki/Ocean_Park_Hong_Kong",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Ocean_Park_Hong_Kong.jpg"
+  },
+  {
+    "slug": "star-ferry",
+    "title": "Star Ferry",
+    "image": "assets/images/star-ferry.jpg",
+    "source": "https://en.wikipedia.org/wiki/Star_Ferry",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Tsim_Sha_Tsui_Ferry_Pier.jpg"
+  },
+  {
+    "slug": "temple-street",
+    "title": "Temple Street, Hong Kong",
+    "image": "assets/images/temple-street.jpg",
+    "source": "https://en.wikipedia.org/wiki/Temple_Street,_Hong_Kong",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a6/GateOfTempleInHongKong.jpg"
+  },
+  {
+    "slug": "wong-tai-sin",
+    "title": "Wong Tai Sin Temple (Hong Kong)",
+    "image": "assets/images/wong-tai-sin.JPG",
+    "source": "https://en.wikipedia.org/wiki/Wong_Tai_Sin_Temple_(Hong_Kong)",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/HK_WongTaiSinTemple.JPG"
+  },
+  {
+    "slug": "west-kowloon",
+    "title": "West Kowloon Cultural District",
+    "image": "assets/images/west-kowloon.jpg",
+    "source": "https://en.wikipedia.org/wiki/West_Kowloon_Cultural_District",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/M%2B%2C_West_Kowloon%2C_Hong_Kong.jpg"
+  },
+  {
+    "slug": "avenue-stars",
+    "title": "Avenue of Stars, Hong Kong",
+    "image": "assets/images/avenue-stars.jpg",
+    "source": "https://en.wikipedia.org/wiki/Avenue_of_Stars,_Hong_Kong",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Avenue_of_Stars_201901.jpg"
+  },
+  {
+    "slug": "ngong-ping",
+    "title": "Ngong Ping 360",
+    "image": "assets/images/ngong-ping.jpg",
+    "source": "https://en.wikipedia.org/wiki/Ngong_Ping_360",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Ngong_Ping_360_Cable_Car_and_HKG_2021-09.jpg"
+  },
+  {
+    "slug": "hong-kong-tramways",
+    "title": "Hong Kong Tramways",
+    "image": "assets/images/hong-kong-tramways.jpg",
+    "source": "https://en.wikipedia.org/wiki/Hong_Kong_Tramways",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Hong_Kong_Tramways_in_2017.jpg"
+  }
+]

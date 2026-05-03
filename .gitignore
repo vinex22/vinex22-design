@@ -15,6 +15,7 @@ node_modules/
 .idea/
 .vscode/
 Thumbs.db
+~$*.pptx
 
 # Verification artifacts (screenshots, ad-hoc test scripts)
 demos/_frames_*.png
